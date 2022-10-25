@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:where_to/Screens/WelcomePage.dart';
+import 'package:where_to/Screens/LoginPage.dart';
 
 void main() => runApp(const MyApp());
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
         title: "WhereTo",
         home: const Scaffold(
           backgroundColor: Color(0xFFBFD6D9),
-          body: WelcomePage(),
+          body: LoginPage(),
         ));
   }
 }
