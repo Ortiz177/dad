@@ -21,7 +21,39 @@ class _WelcomePageState extends State<WelcomePage> {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white.withAlpha(55),
-      body: Stack(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          'WhereTo',
+          style: TextStyle(color: Colors.orange, fontSize: 33),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.sms,
+              color: Colors.orange,
+              size: size.width * 0.10,
+            ),
+            onPressed: () {},
+          ),
+          Container(
+            width: size.width * 0.05,
+          ),
+        ],
+      ),
+      body: Container(
+        child: Stack(
+          children: [
+            Positioned(
+                top: 0,
+                child: Container(
+                  width: size.width,
+                  child: Stack(),
+                ))
+          ],
+        ),
+      ),
+      bottomNavigationBar: Stack(
         children: [
           Positioned(
             bottom: 0,

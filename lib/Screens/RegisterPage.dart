@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:where_to/Screens/LoginPage.dart';
+import 'package:where_to/Screens/WelcomePage.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
@@ -131,7 +132,11 @@ class _MyRegisterState extends State<MyRegister> {
                                 child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
-                                      Navigator.pushNamed(context, 'login');
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  WelcomePage()));
                                     },
                                     icon: Icon(
                                       Icons.arrow_forward,
