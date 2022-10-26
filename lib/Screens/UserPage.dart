@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/animation.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:where_to/Screens/WelcomePage.dart';
 import 'package:where_to/Screens/MapPage.dart';
-import 'package:where_to/Screens/UserPage.dart';
 import 'package:where_to/Widgets/NavigationMenu.dart';
 
-class WelcomePage extends StatefulWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+class UserPage extends StatefulWidget {
+  const UserPage({Key? key}) : super(key: key);
   @override
-  State<WelcomePage> createState() => _WelcomePageState();
+  State<UserPage> createState() => _UserPageState();
 }
 
-class _WelcomePageState extends State<WelcomePage> {
-  //int currentIndex = 0;
+class _UserPageState extends State<UserPage> {
+  int currentIndex = 0;
 
-  //setBottomBarIndex(index) {
-  //  setState(() {
-  //    currentIndex = index;
-  //  });
-  //}
+  setBottomBarIndex(index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

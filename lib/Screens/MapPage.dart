@@ -1,30 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/animation.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:where_to/Screens/MapPage.dart';
+import 'package:where_to/Screens/WelcomePage.dart';
 import 'package:where_to/Screens/UserPage.dart';
 import 'package:where_to/Widgets/NavigationMenu.dart';
 
-class WelcomePage extends StatefulWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+class MapPage extends StatefulWidget {
+  const MapPage({Key? key}) : super(key: key);
   @override
-  State<WelcomePage> createState() => _WelcomePageState();
+  State<MapPage> createState() => _MapPageState();
 }
 
-class _WelcomePageState extends State<WelcomePage> {
-  //int currentIndex = 0;
-
-  //setBottomBarIndex(index) {
-  //  setState(() {
-  //    currentIndex = index;
-  //  });
-  //}
-
+class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white.withAlpha(55),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
