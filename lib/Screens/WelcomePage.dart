@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/animation.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:where_to/Screens/MapPage.dart';
-import 'package:where_to/Screens/UserPage.dart';
+import 'package:where_to/Screens/MessagePage.dart';
 import 'package:where_to/Widgets/NavigationMenu.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -26,11 +24,14 @@ class _WelcomePageState extends State<WelcomePage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(
-              Icons.sms,
+              Icons.send,
               color: Colors.orange,
               size: size.width * 0.10,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MessagePage()));
+            },
           ),
           Container(
             width: size.width * 0.05,
