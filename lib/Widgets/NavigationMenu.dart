@@ -3,7 +3,20 @@ import 'package:where_to/Screens/UserPage.dart';
 import 'package:where_to/Screens/MapPage.dart';
 import 'package:where_to/Screens/WelcomePage.dart';
 
-class NavigationMenu extends StatelessWidget {
+int currentIndex = 0;
+
+class NavigationMenu extends StatefulWidget {
+  @override
+  _NavigationMenuState createState() => _NavigationMenuState();
+}
+
+class _NavigationMenuState extends State<NavigationMenu> {
+  setBottomBarIndex(index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -28,7 +41,7 @@ class NavigationMenu extends StatelessWidget {
                     child: Icon(Icons.room),
                     elevation: 0.1,
                     onPressed: () {
-                      //setBottomBarIndex(2);
+                      setBottomBarIndex(2);
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => MapPage()));
                     }),
@@ -42,14 +55,16 @@ class NavigationMenu extends StatelessWidget {
                     IconButton(
                       icon: Icon(
                         Icons.home,
-                        color: Colors.orange,
-                        //color: currentIndex == 0
-                        //    ? Colors.orange
-                        //    : Colors.grey.shade400,
+                        //color: Colors.orange,
+                        color: currentIndex == 0
+                            ? Colors.orange
+                            : currentIndex != 2
+                                ? Colors.grey.shade400
+                                : Colors.white,
                         size: size.width * 0.10,
                       ),
                       onPressed: () {
-                        //setBottomBarIndex(0);
+                        setBottomBarIndex(0);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -63,14 +78,16 @@ class NavigationMenu extends StatelessWidget {
                     IconButton(
                         icon: Icon(
                           Icons.account_circle,
-                          color: Colors.grey.shade400,
-                          //color: currentIndex == 4
-                          //    ? Colors.orange
-                          //    : Colors.grey.shade400,
+                          //color: Colors.grey.shade400,
+                          color: currentIndex == 4
+                              ? Colors.orange
+                              : currentIndex != 2
+                                  ? Colors.grey.shade400
+                                  : Colors.white,
                           size: size.width * 0.10,
                         ),
                         onPressed: () {
-                          //setBottomBarIndex(4);
+                          setBottomBarIndex(4);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -91,7 +108,7 @@ class BNBCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = new Paint()
-      ..color = Colors.white
+      ..color = currentIndex == 2 ? Colors.orange : Colors.white
       ..style = PaintingStyle.fill;
 
     Path path = Path();

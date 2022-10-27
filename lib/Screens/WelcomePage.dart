@@ -12,14 +12,6 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
-  //int currentIndex = 0;
-
-  //setBottomBarIndex(index) {
-  //  setState(() {
-  //    currentIndex = index;
-  //  });
-  //}
-
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
