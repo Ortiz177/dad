@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:where_to/Screens/LoginPage.dart';
 import 'package:where_to/Screens/WelcomePage.dart';
 
@@ -28,7 +31,7 @@ class _MyRegisterState extends State<MyRegister> {
             Container(
               padding: EdgeInsets.only(left: 35, top: 30),
               child: Text(
-                'Create\nAccount',
+                'Crear\nNueva Cuenta',
                 style: TextStyle(color: Colors.white, fontSize: 33),
               ),
             ),
@@ -58,7 +61,7 @@ class _MyRegisterState extends State<MyRegister> {
                                     color: Colors.black,
                                   ),
                                 ),
-                                hintText: "Name",
+                                hintText: "Nombre",
                                 hintStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -107,7 +110,7 @@ class _MyRegisterState extends State<MyRegister> {
                                     color: Colors.black,
                                   ),
                                 ),
-                                hintText: "Password",
+                                hintText: "Contraseña",
                                 hintStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -120,7 +123,7 @@ class _MyRegisterState extends State<MyRegister> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Sign Up',
+                                'Crear cuenta',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 27,
@@ -156,7 +159,7 @@ class _MyRegisterState extends State<MyRegister> {
                                   // Navigator.of(context).push(_createRoute());
                                 },
                                 child: Text(
-                                  'Sign In',
+                                  'Ingresar',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       decoration: TextDecoration.underline,

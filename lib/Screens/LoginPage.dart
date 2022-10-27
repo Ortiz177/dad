@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                             decoration: InputDecoration(
                                 fillColor: Colors.grey.shade100,
                                 filled: true,
-                                hintText: "Password",
+                                hintText: "Contraseña",
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Sign in',
+                                'Ingresar',
                                 style: TextStyle(
                                     fontSize: 27, fontWeight: FontWeight.w700),
                               ),
@@ -115,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                                           builder: (context) => MyRegister()));
                                 },
                                 child: Text(
-                                  'Sign Up',
+                                  'Crear cuenta',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       decoration: TextDecoration.underline,
@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                               TextButton(
                                   onPressed: () {},
                                   child: Text(
-                                    'Forgot Password',
+                                    '¿Contraseña?',
                                     style: TextStyle(
                                       decoration: TextDecoration.underline,
                                       color: Color(0xff4c505b),
