@@ -23,7 +23,7 @@ class _UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white.withAlpha(55),
+      backgroundColor: Colors.orange,
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(

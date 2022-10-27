@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/animation.dart';
 import 'package:where_to/Screens/WelcomePage.dart';
 import 'package:where_to/Widgets/NavigationMenu.dart';
 
@@ -25,8 +26,7 @@ class _MessagePageState extends State<MessagePage> {
                 size: size.width * 0.10,
               ),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => WelcomePage()));
+                Navigator.of(context).push(_routeHome());
               },
             );
           },
@@ -50,4 +50,22 @@ class _MessagePageState extends State<MessagePage> {
       ),
     );
   }
+}
+
+Route _routeHome() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) =>
+        const WelcomePage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(-1.0, 0.0);
+      const end = Offset.zero;
+      final tween = Tween(begin: begin, end: end);
+      final offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+  );
 }

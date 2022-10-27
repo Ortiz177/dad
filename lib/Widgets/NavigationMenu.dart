@@ -4,6 +4,7 @@ import 'package:where_to/Screens/MapPage.dart';
 import 'package:where_to/Screens/WelcomePage.dart';
 
 int currentIndex = 0;
+const screen = [WelcomePage(), MapPage(), UserPage()];
 
 class NavigationMenu extends StatefulWidget {
   @override
@@ -41,9 +42,8 @@ class _NavigationMenuState extends State<NavigationMenu> {
                     child: Icon(Icons.room),
                     elevation: 0.1,
                     onPressed: () {
-                      setBottomBarIndex(2);
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => MapPage()));
+                      setBottomBarIndex(1);
+                      Navigator.of(context).push(_createRoute());
                     }),
               ),
               Container(
@@ -58,17 +58,12 @@ class _NavigationMenuState extends State<NavigationMenu> {
                         //color: Colors.orange,
                         color: currentIndex == 0
                             ? Colors.orange
-                            : currentIndex != 2
-                                ? Colors.grey.shade400
-                                : Colors.white,
+                            : Colors.grey.shade400,
                         size: size.width * 0.10,
                       ),
                       onPressed: () {
                         setBottomBarIndex(0);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => WelcomePage()));
+                        Navigator.of(context).push(_createRoute());
                       },
                       splashColor: Colors.white,
                     ),
@@ -79,19 +74,14 @@ class _NavigationMenuState extends State<NavigationMenu> {
                         icon: Icon(
                           Icons.account_circle,
                           //color: Colors.grey.shade400,
-                          color: currentIndex == 4
+                          color: currentIndex == 2
                               ? Colors.orange
-                              : currentIndex != 2
-                                  ? Colors.grey.shade400
-                                  : Colors.white,
+                              : Colors.grey.shade400,
                           size: size.width * 0.10,
                         ),
                         onPressed: () {
-                          setBottomBarIndex(4);
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => UserPage()));
+                          setBottomBarIndex(2);
+                          Navigator.of(context).push(_createRoute());
                         }),
                   ],
                 ),
@@ -108,7 +98,7 @@ class BNBCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = new Paint()
-      ..color = currentIndex == 2 ? Colors.orange : Colors.white
+      ..color = Colors.white
       ..style = PaintingStyle.fill;
 
     Path path = Path();
@@ -130,4 +120,23 @@ class BNBCustomPainter extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) {
     return false;
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) =>
+        screen[currentIndex],
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset.zero;
+      const end = Offset.zero;
+      const curve = Curves.easeInCirc;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }
