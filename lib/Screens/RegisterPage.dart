@@ -1,6 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
-import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:where_to/Screens/LoginPage.dart';
 import 'package:where_to/Screens/WelcomePage.dart';
@@ -13,6 +12,7 @@ class MyRegister extends StatefulWidget {
 }
 
 class _MyRegisterState extends State<MyRegister> {
+  final controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,6 +47,7 @@ class _MyRegisterState extends State<MyRegister> {
                       child: Column(
                         children: [
                           TextField(
+                            controller: controller,
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -135,6 +136,8 @@ class _MyRegisterState extends State<MyRegister> {
                                 child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
+                                      final name = controller.text;
+                                      createUser(name: name);
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -181,5 +184,16 @@ class _MyRegisterState extends State<MyRegister> {
         ),
       ),
     );
+  }
+
+  Future createUser({required String name}) async {
+    final docUser = FirebaseFirestore.instance.collection('users').doc();
+
+    final json = {
+      'name': name,
+      'age': 21,
+      'email': "test@test.com",
+    };
+    await docUser.set(json);
   }
 }
