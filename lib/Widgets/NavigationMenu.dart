@@ -19,9 +19,9 @@ class _NavigationMenuState extends State<NavigationMenu> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final Size size = MediaQuery.of(context).size;
-    return Stack(children: [
+    return Row(children: [
       Positioned(
         bottom: 0,
         left: 0,

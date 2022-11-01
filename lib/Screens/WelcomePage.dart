@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:where_to/Screens/MessagePage.dart';
 import 'package:where_to/Widgets/NavigationMenu.dart';
+import 'package:where_to/Widgets/Post.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -38,19 +39,12 @@ class _WelcomePageState extends State<WelcomePage> {
           ),
         ],
       ),
-      body: Container(
-        child: Stack(
-          children: [
-            Positioned(
-                top: 0,
-                child: Container(
-                  width: size.width,
-                  child: Stack(),
-                ))
-          ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[Post(), Post(), Post()],
         ),
       ),
-      bottomNavigationBar: NavigationMenu(),
+      bottomNavigationBar: Stack(children: [NavigationMenu()]),
     );
   }
 }
