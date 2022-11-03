@@ -100,7 +100,8 @@ class _ChatPageState extends State<ChatPage> {
   void _handleAttachmentPressed() {
     showModalBottomSheet<void>(
       context: context,
-      builder: (BuildContext context) => SafeArea(
+      builder: (BuildContext context) => Container(
+        padding: EdgeInsets.only(bottom: 20),
         child: SizedBox(
           height: 144,
           child: Column(
@@ -112,8 +113,9 @@ class _ChatPageState extends State<ChatPage> {
                   _handleImageSelection();
                 },
                 child: const Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: Text('Photo'),
+                  alignment: AlignmentDirectional.center,
+                  child: Text('Foto o video',
+                      style: TextStyle(color: Colors.orange)),
                 ),
               ),
               TextButton(
@@ -122,15 +124,17 @@ class _ChatPageState extends State<ChatPage> {
                   _handleFileSelection();
                 },
                 child: const Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: Text('File'),
+                  alignment: AlignmentDirectional.center,
+                  child:
+                      Text('Documento', style: TextStyle(color: Colors.orange)),
                 ),
               ),
               TextButton(
                 onPressed: () => Navigator.pop(context),
                 child: const Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: Text('Cancel'),
+                  alignment: AlignmentDirectional.center,
+                  child:
+                      Text('Cancelar', style: TextStyle(color: Colors.orange)),
                 ),
               ),
             ],
