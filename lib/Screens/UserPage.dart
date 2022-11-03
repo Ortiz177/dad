@@ -24,22 +24,6 @@ class _UserPageState extends State<UserPage> {
             'WhereTo',
             style: TextStyle(color: Colors.orange, fontSize: 33),
           ),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                Icons.send,
-                color: Colors.orange,
-                size: size.width * 0.10,
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MessagePage()));
-              },
-            ),
-            Container(
-              width: size.width * 0.05,
-            ),
-          ],
         ),
         body: Container(
           margin: const EdgeInsets.all(10),
@@ -137,6 +121,10 @@ class _UserPageState extends State<UserPage> {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
+                        Container(
+                            child: Row(
+                          children: [],
+                        )),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 10),
                           child: Row(
@@ -174,39 +162,6 @@ class _UserPageState extends State<UserPage> {
                                 'assets/parque2.png',
                                 fit: BoxFit.fitWidth,
                                 width: size.width / 4,
-                              ),
-                              Image.asset(
-                                'assets/parque2.png',
-                                fit: BoxFit.fitWidth,
-                                width: size.width / 4,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              //IconButton(
-                              //    onPressed: () {
-                              //      Navigator.push(
-                              //          context,
-                              //          MaterialPageRoute(
-                              //              builder: (context) =>
-                              //                  MessagePage()));
-                              //    },
-                              //    icon: Image.asset(
-                              //      'assets/parque2.png',
-                              //    )),
-
-                              Image.asset(
-                                'assets/parque2.png',
-                                fit: BoxFit.fitWidth,
-                                width: size.width / 4,
-                              ),
-                              Container(
-                                width: size.width,
                               ),
                               Image.asset(
                                 'assets/parque2.png',
@@ -223,33 +178,3 @@ class _UserPageState extends State<UserPage> {
         bottomNavigationBar: Stack(children: [NavigationMenu()]));
   }
 }
-
-/*Container(
-                  margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                  padding: const EdgeInsets.all(20),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  child: Column(children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Image.asset(
-                          'assets/parque2.png',
-                          fit: BoxFit.fitWidth,
-                          width: size.width / 4,
-                        ),
-                        Image.asset(
-                          'assets/parque2.png',
-                          fit: BoxFit.fitWidth,
-                          width: size.width / 4,
-                        ),
-                        Image.asset(
-                          'assets/parque2.png',
-                          fit: BoxFit.fitWidth,
-                          width: size.width / 4,
-                        ),
-                      ],
-                    )
-                  ]),
-                ),*/
