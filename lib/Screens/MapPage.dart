@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import 'package:where_to/src/locations.dart' as locations;
 //import 'package:geolocator/geolocator.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,8 +16,8 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  //late GoogleMapController mapController;
-
+  late GoogleMapController mapController;
+  late Widget add;
   //void _onMapCreated(GoogleMapController controller) {
   //  mapController = controller;
   //}
@@ -58,11 +59,11 @@ class _MapPageState extends State<MapPage> {
           actions: <Widget>[
             IconButton(
               icon: Icon(
-                Icons.sms,
+                Icons.add,
                 color: Colors.orange,
                 size: size.width * 0.10,
               ),
-              onPressed: () {},
+              onPressed: _showAlertDialog,
             ),
             Container(
               width: size.width * 0.05,
@@ -72,48 +73,120 @@ class _MapPageState extends State<MapPage> {
         body: GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: const CameraPosition(
-            target: LatLng(0, 0),
-            zoom: 2,
+            target: LatLng(6.240862, -75.590475),
+            zoom: 15,
           ),
           markers: _markers.values.toSet(),
         ),
         bottomNavigationBar: NavigationMenu());
   }
+
+  void _showAlertDialog() {
+    showDialog(
+        context: context,
+        builder: (buildcontext) {
+          return AlertDialog(
+            actions: <Widget>[
+              Container(
+                margin: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                padding: const EdgeInsets.all(20),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(25))),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(Icons.room, color: Colors.orange),
+                          Text("Agregar nueva ubicación",
+                              style:
+                                  TextStyle(color: Colors.orange, fontSize: 15))
+                        ],
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            TextField(
+                              style: TextStyle(color: Colors.black),
+                              decoration: InputDecoration(
+                                  hintText: "Nombre lugar",
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  )),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Column(
+                              children: [
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context, 'OK');
+                                      showDialog(
+                                          context: context,
+                                          builder: (buildcontext) {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  "Se a encontrado la ubicación"),
+                                              content:
+                                                  Text("¿Desea agregarla?"),
+                                              actions: [
+                                                TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(
+                                                          context, 'Agregar');
+                                                      setState(() {
+                                                        final marker = Marker(
+                                                          markerId: MarkerId(
+                                                              "Parque de San Joaquin"),
+                                                          position: LatLng(
+                                                              6.245692,
+                                                              -75.586691),
+                                                          infoWindow:
+                                                              InfoWindow(
+                                                            title:
+                                                                "Parque de San Joaquin",
+                                                            snippet: "",
+                                                          ),
+                                                        );
+                                                        _markers[
+                                                                "Parque de San Joaquin"] =
+                                                            marker;
+                                                      });
+                                                    },
+                                                    child: Text("Agregar"))
+                                              ],
+                                            );
+                                          });
+                                    },
+                                    child: Text("Buscar en Googel Maps")),
+                                TextButton(
+                                    onPressed: () {},
+                                    child: Text("Ingresar dirección"))
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ]),
+              )
+            ],
+          );
+        });
+  }
 }
 
-/*Future<Position> _getCurrentPosition() async {
-  bool serviceEnabled;
-  LocationPermission permission;
-
-  // Test if location services are enabled.
-  serviceEnabled = await Geolocator.isLocationServiceEnabled();
-  if (!serviceEnabled) {
-    // Location services are not enabled don't continue
-    // accessing the position and request users of the
-    // App to enable the location services.
-    return Future.error('Location services are disabled.');
-  }
-
-  permission = await Geolocator.checkPermission();
-  if (permission == LocationPermission.denied) {
-    permission = await Geolocator.requestPermission();
-    if (permission == LocationPermission.denied) {
-      // Permissions are denied, next time you could try
-      // requesting permissions again (this is also where
-      // Android's shouldShowRequestPermissionRationale
-      // returned true. According to Android guidelines
-      // your App should show an explanatory UI now.
-      return Future.error('Location permissions are denied');
-    }
-  }
-
-  if (permission == LocationPermission.deniedForever) {
-    // Permissions are denied forever, handle appropriately.
-    return Future.error(
-        'Location permissions are permanently denied, we cannot request permissions.');
-  }
-
-  // When we reach here, permissions are granted and we can
-  // continue accessing the position of the device.
-  return await Geolocator.getCurrentPosition();
-}*/
+//setState(() {
+//                  final marker = Marker(
+//                    markerId: MarkerId("Parque de San Joaquin"),
+//                    position: LatLng(6.245692, -75.586691),
+//                    infoWindow: InfoWindow(
+//                      title: "Parque de San Joaquin",
+//                      snippet: "",
+//                    ),
+//                  );
+//                  _markers["Parque de San Joaquin"] = marker;
+//                });
