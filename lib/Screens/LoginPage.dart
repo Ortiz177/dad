@@ -14,9 +14,21 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+class Foo {
+  static String name1 = "null";
+  static String email1 = "null";
+  static String pass1 = "null";
+  static void func(String name, String email, String pass) {
+    name1 = name;
+    email1 = email;
+    pass1 = pass;
+  }
+}
+
 class _LoginPageState extends State<LoginPage> {
   int currentIndex = 0;
   List<dynamic> ClavesDB = [];
+  List<dynamic> NamesDB = [];
   List<dynamic> EmailsDB = [];
   String Logueo = "1";
   final myControllerPass = TextEditingController();
@@ -30,11 +42,8 @@ class _LoginPageState extends State<LoginPage> {
   LoadData(String pass, String email) {
     var value = rootBundle.loadString('data/users.json').then((value) {
       List<dynamic> data = json.decode(value);
-      print(data);
-      data.forEach((k) => print(k));
-
-      /*
       data.forEach((k) => ClavesDB.add(k["pass"]));
+      data.forEach((k) => NamesDB.add(k["name"]));
       ClavesDB.forEach((element) {
         print(element);
       });
@@ -61,8 +70,10 @@ class _LoginPageState extends State<LoginPage> {
       print(Logueo);
       print(ClavesDB.indexOf(pass));
       print(EmailsDB.indexOf(email));
-   */
     });
+    ClavesDB.add(Foo.pass1);
+    NamesDB.add(Foo.name1);
+    EmailsDB.add(Foo.email1);
   }
 
   @override
