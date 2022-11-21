@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:where_to/Widgets/Like.dart';
 
 class Post extends StatelessWidget {
-  final String imagesrc;
-  Post({Key? key, required this.imagesrc}) : super(key: key);
+  final String imagesrc, textPost;
+  Post({Key? key, required this.imagesrc, required this.textPost})
+      : super(key: key);
   Color _favIconColor = Colors.grey;
+
   @override
   Widget build(context) {
     return Container(
@@ -29,18 +32,9 @@ class Post extends StatelessWidget {
         ),
         Row(
           children: <Widget>[
-            Text("Que bonito"),
+            Text('${textPost}'),
             Spacer(),
-            IconButton(
-                icon: Icon(Icons.favorite),
-                color: _favIconColor,
-                onPressed: () {
-                  if (_favIconColor == Colors.grey) {
-                    _favIconColor = Colors.red;
-                  } else {
-                    _favIconColor = Colors.grey;
-                  }
-                }),
+            Like(),
           ],
         )
       ]),
