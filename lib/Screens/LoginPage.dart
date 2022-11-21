@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 import 'package:where_to/Screens/RegisterPage.dart';
+import 'package:where_to/Screens/TestData.dart';
 import 'package:where_to/Screens/WelcomePage.dart';
+import 'package:where_to/providers/data_provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,10 +16,52 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   int currentIndex = 0;
-
+  List<dynamic> ClavesDB = [];
+  List<dynamic> EmailsDB = [];
+  String Logueo = "1";
+  final myControllerPass = TextEditingController();
+  final myControllerEmail = TextEditingController();
   setBottomBarIndex(index) {
     setState(() {
       currentIndex = index;
+    });
+  }
+
+  LoadData(String pass, String email) {
+    var value = rootBundle.loadString('data/users.json').then((value) {
+      List<dynamic> data = json.decode(value);
+      print(data);
+      data.forEach((k) => print(k));
+
+      /*
+      data.forEach((k) => ClavesDB.add(k["pass"]));
+      ClavesDB.forEach((element) {
+        print(element);
+      });
+
+      data.forEach((k) => EmailsDB.add(k["email"]));
+      EmailsDB.forEach((element) {
+        print(element);
+      });
+      Logueo = ClavesDB.contains(pass)
+          ? EmailsDB.contains(email)
+              ? ClavesDB.indexOf(pass) == EmailsDB.indexOf(email)
+                  ? ClavesDB.indexOf(pass) != (-1)
+                      ? EmailsDB.indexOf(email) != (-1)
+                          ? "pasa"
+                          : "no pasa"
+                      : "no pasa"
+                  : "no pasa"
+              : "no pasa"
+          : "no pasa";
+      Logueo == "pasa"
+          ? Navigator.push(
+              context, MaterialPageRoute(builder: (context) => WelcomePage()))
+          : "";
+      print(Logueo);
+      print(ClavesDB.indexOf(pass));
+      print(EmailsDB.indexOf(email));
+   */
     });
   }
 
@@ -57,6 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
+                            controller: myControllerEmail,
                           ),
                           SizedBox(
                             height: 30,
@@ -71,6 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
+                            controller: myControllerPass,
                           ),
                           SizedBox(
                             height: 40,
@@ -85,20 +134,18 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               CircleAvatar(
                                 radius: 30,
-                                backgroundColor: Color(0xff4c505b),
+                                backgroundColor:
+                                    Color.fromARGB(255, 255, 255, 255),
                                 child: IconButton(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 92, 195, 255),
                                     onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  WelcomePage()));
+                                      LoadData(myControllerPass.text,
+                                          myControllerEmail.text);
                                     },
                                     icon: Icon(
-                                      Icons.arrow_forward,
+                                      Icons.login,
                                     )),
-                              )
+                              ),
                             ],
                           ),
                           SizedBox(

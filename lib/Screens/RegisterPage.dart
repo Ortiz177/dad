@@ -12,7 +12,10 @@ class MyRegister extends StatefulWidget {
 }
 
 class _MyRegisterState extends State<MyRegister> {
-  final controller = TextEditingController();
+  final ControllerName = TextEditingController();
+  final ControllerPass = TextEditingController();
+  final ControllerEmail = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,7 +50,7 @@ class _MyRegisterState extends State<MyRegister> {
                       child: Column(
                         children: [
                           TextField(
-                            controller: controller,
+                            controller: ControllerName,
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -72,6 +75,7 @@ class _MyRegisterState extends State<MyRegister> {
                             height: 30,
                           ),
                           TextField(
+                            controller: ControllerEmail,
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -96,6 +100,7 @@ class _MyRegisterState extends State<MyRegister> {
                             height: 30,
                           ),
                           TextField(
+                            controller: ControllerPass,
                             style: TextStyle(color: Colors.white),
                             obscureText: true,
                             decoration: InputDecoration(
@@ -136,8 +141,6 @@ class _MyRegisterState extends State<MyRegister> {
                                 child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
-                                      final name = controller.text;
-                                      createUser(name: name);
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -184,16 +187,5 @@ class _MyRegisterState extends State<MyRegister> {
         ),
       ),
     );
-  }
-
-  Future createUser({required String name}) async {
-    final docUser = FirebaseFirestore.instance.collection('users').doc();
-
-    final json = {
-      'name': name,
-      'age': 21,
-      'email': "test@test.com",
-    };
-    await docUser.set(json);
   }
 }
