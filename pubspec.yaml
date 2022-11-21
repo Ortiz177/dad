@@ -80,7 +80,10 @@ flutter:
   assets:
      - assets/login.png
      - assets/register.png
+     - assets/parque.png
      - assets/parque2.png
+     - assets/parque3.png
+     - assets/parque4.png
      - assets/locations.json
      - data/users.json
 

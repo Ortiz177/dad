@@ -41,7 +41,12 @@ class _WelcomePageState extends State<WelcomePage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: <Widget>[Post(imagesrc: 'assets/parque2.png')],
+          children: <Widget>[
+            Post(imagesrc: 'assets/parque.png'),
+            Post(imagesrc: 'assets/parque2.png'),
+            Post(imagesrc: 'assets/parque3.png'),
+            Post(imagesrc: 'assets/parque4.png')
+          ],
         ),
       ),
       bottomNavigationBar: Stack(children: [NavigationMenu()]),
