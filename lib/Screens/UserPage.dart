@@ -176,6 +176,75 @@ class _UserPageState extends State<UserPage> {
                 ),
               ]),
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (buildcontext) {
+                  return AlertDialog(
+                    title: Text('Agregar nueva publicación'),
+                    actions: [
+                      Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Icon(
+                                  Icons.photo_camera,
+                                  color: Colors.orange,
+                                  size: 50,
+                                ),
+                                Container(
+                                  width: size.width * 0.05,
+                                ),
+                                Icon(
+                                  Icons.photo_camera_back,
+                                  color: Colors.orange,
+                                  size: 50,
+                                )
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: TextField(
+                              style: TextStyle(color: Colors.black),
+                              decoration: InputDecoration(
+                                  hintText: "Pie de foto",
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  )),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context, 'Cancelar');
+                                      },
+                                      child: Text('Cancelar')),
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context, 'Publicar');
+                                      },
+                                      child: Text('Publicar'))
+                                ]),
+                          )
+                        ],
+                      )
+                    ],
+                  );
+                });
+          },
+          backgroundColor: Colors.orange,
+          child: Icon(Icons.add),
+        ),
         bottomNavigationBar: Stack(children: [NavigationMenu()]));
   }
 }
