@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Post extends StatefulWidget {
-  @override
-  _PostState createState() => _PostState();
-}
-
-class _PostState extends State<Post> {
+class Post extends StatelessWidget {
+  final String imagesrc;
+  Post({Key? key, required this.imagesrc}) : super(key: key);
   Color _favIconColor = Colors.grey;
   @override
   Widget build(context) {
@@ -25,7 +22,7 @@ class _PostState extends State<Post> {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
           child: Image.asset(
-            'assets/parque2.png',
+            '${imagesrc}',
             fit: BoxFit.fitWidth,
             width: 300,
           ),
@@ -38,13 +35,11 @@ class _PostState extends State<Post> {
                 icon: Icon(Icons.favorite),
                 color: _favIconColor,
                 onPressed: () {
-                  setState(() {
-                    if (_favIconColor == Colors.grey) {
-                      _favIconColor = Colors.red;
-                    } else {
-                      _favIconColor = Colors.grey;
-                    }
-                  });
+                  if (_favIconColor == Colors.grey) {
+                    _favIconColor = Colors.red;
+                  } else {
+                    _favIconColor = Colors.grey;
+                  }
                 }),
           ],
         )

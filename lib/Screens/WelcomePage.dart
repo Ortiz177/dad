@@ -41,7 +41,7 @@ class _WelcomePageState extends State<WelcomePage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: <Widget>[Post(), Post(), Post()],
+          children: <Widget>[Post(imagesrc: 'assets/parque2.png')],
         ),
       ),
       bottomNavigationBar: Stack(children: [NavigationMenu()]),
