@@ -53,7 +53,7 @@ class _UserPageState extends State<UserPage> {
                             Text(
                               ActualUser.nameactuall,
                               style: TextStyle(
-                                  fontSize: 12.0,
+                                  fontSize: 25.0,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w900,
                                   fontFamily: "Roboto"),
@@ -65,18 +65,15 @@ class _UserPageState extends State<UserPage> {
                           children: <Widget>[
                             Column(
                               children: <Widget>[
-                                Text(
-                                  'Amigos',
-                                  style: TextStyle(
-                                      fontSize: 12.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w900,
-                                      fontFamily: "Roboto"),
+                                Icon(
+                                  Icons.person_add,
+                                  color: Colors.white,
+                                  size: 60,
                                 ),
                                 Text(
-                                  '3',
+                                  '  3',
                                   style: TextStyle(
-                                      fontSize: 12.0,
+                                      fontSize: 30.0,
                                       color: Colors.white,
                                       fontWeight: FontWeight.w900,
                                       fontFamily: "Roboto"),
@@ -90,18 +87,15 @@ class _UserPageState extends State<UserPage> {
                           children: <Widget>[
                             Column(
                               children: <Widget>[
-                                Text(
-                                  'Ubicaciones',
-                                  style: TextStyle(
-                                      fontSize: 12.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w900,
-                                      fontFamily: "Roboto"),
+                                Icon(
+                                  Icons.room,
+                                  color: Colors.white,
+                                  size: 60,
                                 ),
                                 Text(
-                                  '2',
+                                  '4',
                                   style: TextStyle(
-                                      fontSize: 12.0,
+                                      fontSize: 25.0,
                                       color: Colors.white,
                                       fontWeight: FontWeight.w900,
                                       fontFamily: "Roboto"),
@@ -113,8 +107,8 @@ class _UserPageState extends State<UserPage> {
                       ]),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(top: 10),
-                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(top: 30),
+                  padding: const EdgeInsets.all(30),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -132,42 +126,32 @@ class _UserPageState extends State<UserPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
                               Image.asset(
-                                'assets/parque2.png',
+                                'assets/parque.png',
                                 fit: BoxFit.fitWidth,
-                                width: size.width / 4,
+                                width: size.width / 3,
                               ),
                               Image.asset(
                                 'assets/parque2.png',
                                 fit: BoxFit.fitWidth,
-                                width: size.width / 4,
-                              ),
-                              Image.asset(
-                                'assets/parque2.png',
-                                fit: BoxFit.fitWidth,
-                                width: size.width / 4,
+                                width: size.width / 3,
                               ),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
+                          padding: const EdgeInsets.only(bottom: 10, top: 30),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
                               Image.asset(
-                                'assets/parque2.png',
+                                'assets/parque3.png',
                                 fit: BoxFit.fitWidth,
-                                width: size.width / 4,
+                                width: size.width / 3,
                               ),
                               Image.asset(
-                                'assets/parque2.png',
+                                'assets/parque4.png',
                                 fit: BoxFit.fitWidth,
-                                width: size.width / 4,
-                              ),
-                              Image.asset(
-                                'assets/parque2.png',
-                                fit: BoxFit.fitWidth,
-                                width: size.width / 4,
+                                width: size.width / 3,
                               ),
                             ],
                           ),
