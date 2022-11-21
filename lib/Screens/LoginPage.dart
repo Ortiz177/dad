@@ -25,6 +25,11 @@ class Foo {
   }
 }
 
+class ActualUser {
+  static String nameactuall = "null";
+  static String emailactuall = "null";
+}
+
 class _LoginPageState extends State<LoginPage> {
   int currentIndex = 0;
   List<dynamic> ClavesDB = [];
@@ -37,6 +42,13 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       currentIndex = index;
     });
+  }
+
+  void func1(String email) {
+    ActualUser.emailactuall = email;
+    ActualUser.nameactuall = NamesDB[EmailsDB.indexOf(email)];
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => WelcomePage()));
   }
 
   LoadData(String pass, String email) {
@@ -63,10 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                   : "no pasa"
               : "no pasa"
           : "no pasa";
-      Logueo == "pasa"
-          ? Navigator.push(
-              context, MaterialPageRoute(builder: (context) => WelcomePage()))
-          : "";
+      Logueo == "pasa" ? func1(myControllerEmail.text) : "";
       print(Logueo);
       print(ClavesDB.indexOf(pass));
       print(EmailsDB.indexOf(email));
@@ -152,6 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                                     onPressed: () {
                                       LoadData(myControllerPass.text,
                                           myControllerEmail.text);
+                                      ;
                                     },
                                     icon: Icon(
                                       Icons.login,

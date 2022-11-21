@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:where_to/Screens/MessagePage.dart';
+import 'package:where_to/Screens/LoginPage.dart';
 import 'package:where_to/Screens/WelcomePage.dart';
 import 'package:where_to/Screens/MapPage.dart';
 import 'package:where_to/Widgets/NavigationMenu.dart';
@@ -50,7 +51,7 @@ class _UserPageState extends State<UserPage> {
                               size: 60,
                             ),
                             Text(
-                              "PABLO LOAIZA MEJÍA",
+                              ActualUser.nameactuall,
                               style: TextStyle(
                                   fontSize: 12.0,
                                   color: Colors.white,
