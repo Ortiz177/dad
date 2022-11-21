@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:where_to/Widgets/Like.dart';
+import 'package:where_to/Screens/LoginPage.dart';
 
 class Post extends StatelessWidget {
   final String imagesrc, textPost;
@@ -19,7 +20,10 @@ class Post extends StatelessWidget {
       child:
           Column(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
         Row(
-          children: <Widget>[Icon(Icons.account_circle), Text("Pablo")],
+          children: <Widget>[
+            Icon(Icons.account_circle),
+            Text(ActualUser.nameactuall)
+          ],
         ),
         Container(
           padding: const EdgeInsets.all(10),
