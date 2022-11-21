@@ -141,6 +141,10 @@ class _MyRegisterState extends State<MyRegister> {
                                 child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
+                                      final name = ControllerName.text;
+                                      final email = ControllerEmail.text;
+                                      final pass = ControllerPass.text;
+                                      createUser(name, email, pass);
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -187,5 +191,9 @@ class _MyRegisterState extends State<MyRegister> {
         ),
       ),
     );
+  }
+
+  createUser(String name, String email, String pass) {
+    Foo.func(name, email, pass);
   }
 }
