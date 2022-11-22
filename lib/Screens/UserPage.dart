@@ -48,7 +48,7 @@ class _UserPageState extends State<UserPage> {
                             Icon(
                               Icons.account_circle,
                               color: Colors.white,
-                              size: 60,
+                              size: 50,
                             ),
                             Text(
                               ActualUser.nameactuall,
@@ -68,7 +68,7 @@ class _UserPageState extends State<UserPage> {
                                 Icon(
                                   Icons.person_add,
                                   color: Colors.white,
-                                  size: 60,
+                                  size: 50,
                                 ),
                                 Text(
                                   '  3',
@@ -90,7 +90,7 @@ class _UserPageState extends State<UserPage> {
                                 Icon(
                                   Icons.room,
                                   color: Colors.white,
-                                  size: 60,
+                                  size: 50,
                                 ),
                                 Text(
                                   '4',

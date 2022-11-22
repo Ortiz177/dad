@@ -134,6 +134,18 @@ class _MapPageState extends State<MapPage> {
                                               content:
                                                   Text("¿Desea agregarla?"),
                                               actions: [
+                                                TextField(
+                                                  style: TextStyle(
+                                                      color: Colors.black),
+                                                  decoration: InputDecoration(
+                                                      hintText: "Actividad",
+                                                      border:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                      )),
+                                                ),
                                                 TextButton(
                                                     onPressed: () {
                                                       Navigator.pop(
@@ -149,7 +161,8 @@ class _MapPageState extends State<MapPage> {
                                                               InfoWindow(
                                                             title:
                                                                 "Parque de San Joaquin",
-                                                            snippet: "",
+                                                            snippet:
+                                                                "Jugar futbol",
                                                           ),
                                                         );
                                                         _markers[
